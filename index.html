@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sishu Mangal Parsat - Honorary Guest Memento</title>
+    <!-- Google Fonts for aesthetic typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Tailwind configuration for specific colors */
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        /* Define custom colors for beige, and new darker gold shades */
+        :root {
+            --color-beige-200: #F5F5DC; /* A light beige */
+            --color-gold-main: #C5B358; /* Old Gold - a richer, darker gold */
+            --color-gold-light: #D4AF37; /* Metallic Gold - for gradients */
+            --color-gold-dark: #8B7355; /* Dark Bronze/Gold - for borders/accents */
+            --color-maroon-700: #800000; /* A pretty maroon for "Sishu Mangal Parsat" text */
+            --color-light-gold-bg: #F8F4E3; /* Very light gold for the 1975-2025 box */
+        }
+
+        .bg-beige-200 { background-color: var(--color-beige-200); }
+        .border-gold-main { border-color: var(--color-gold-main); }
+        .from-gold-main { --tw-gradient-from: var(--color-gold-main) var(--tw-gradient-stops); }
+        .via-gold-light { --tw-gradient-via: var(--color-gold-light) var(--tw-gradient-stops); }
+        .to-gold-main { --tw-gradient-to: var(--color-gold-main) var(--tw-gradient-stops); }
+        .text-gold-main { color: var(--color-gold-main); }
+        .text-gold-light { color: var(--color-gold-light); } /* Added for metallic gold */
+        .text-maroon-700 { color: var(--color-maroon-700); }
+        .bg-light-gold-bg { background-color: var(--color-light-gold-bg); }
+
+
+        /* Custom fonts for a more aesthetic look */
+        body {
+            font-family: 'Inter', sans-serif; /* Default font for UI elements */
+            background-color: #f0f0f0; /* Light gray background for the page */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to start to allow scrolling if content is long */
+            min-height: 100vh; /* Minimum height for full viewport */
+            padding: 2rem; /* Padding around the entire content */
+            box-sizing: border-box;
+        }
+
+        /* Specific styles for the memento text to ensure ample space and classic feel */
+        .memento-text {
+            font-family: 'Lora', serif; /* A classic serif font for the memento content */
+            line-height: 2.0; /* Adjusted line height for better spacing with new honorary text */
+            font-size: 1.25rem; /* Base font size */
+        }
+
+        /* Style for the main title within the memento */
+        .memento-title-main {
+            font-family: 'Playfair Display', serif; /* Elegant font for the main title */
+            font-weight: 700; /* Bold */
+            font-size: 2.2rem; /* Reduced font size for subtlety */
+            letter-spacing: 0.08em; /* Slightly reduced letter spacing */
+        }
+        .memento-subtitle {
+            font-family: 'Lora', serif; /* Subtitle font */
+            font-style: italic;
+            font-size: 1rem;
+            color: #555; /* Slightly darker grey for readability */
+        }
+        .memento-section-title {
+            font-family: 'Lora', serif; /* For "Certificate of Recognition" */
+            font-weight: 600; /* Semi-bold */
+            font-size: 1.15rem;
+            margin-top: 2rem; /* Space above this section */
+        }
+
+        /* Signature name style (less cursive, more elegant script) */
+        .signature-name {
+            font-family: 'Great Vibes', cursive; /* Elegant, less aggressive cursive font for names */
+            font-size: 1.5rem; /* Slightly reduced font size */
+            font-weight: 400; /* Lighter weight for a more natural signature feel */
+            line-height: 1.2; /* Tighter line height for the name itself */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        /* Signature title/org style */
+        .signature-detail {
+            font-family: 'Playfair Display', serif; /* Using Playfair Display for titles/org */
+            font-size: 0.75rem; /* Slightly reduced font size */
+            line-height: 1.2; /* Tighter line height */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        /* Style for the input fields and button */
+        .input-group {
+            @apply mb-4;
+        }
+        .input-group label {
+            @apply block text-gray-700 text-sm font-bold mb-2;
+        }
+        .input-group input {
+            @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline;
+        }
+        .btn-primary {
+            @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out;
+        }
+        .btn-secondary {
+            @apply bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out;
+        }
+
+        /* Watermark styling */
+        .watermark-img-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 0; /* Ensure it's behind content */
+            pointer-events: none; /* Allow interaction with content above */
+        }
+        .watermark-img {
+            width: 70%; /* Adjust size as needed, e.g., 50%, 70%, contain */
+            height: auto;
+            opacity: 0.1; /* Adjust opacity for watermark effect */
+            object-fit: contain; /* Ensure the image fits within its bounds */
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+        }
+
+        /* Ensure content layers are above the watermark */
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hide the input section when printing */
+        @media print {
+            .input-section-container {
+                display: none;
+            }
+            body {
+                padding: 0; /* Remove padding for print */
+                margin: 0; /* Remove margin for print */
+                display: block; /* Allow normal flow for printing */
+                background-color: white; /* White background for print */
+            }
+            .memento-container {
+                box-shadow: none !important; /* Remove shadow for print */
+                border: none !important; /* Remove outer border for print if desired */
+                width: 100% !important; /* Ensure full width on print */
+                max-width: none !important; /* Remove max-width for print */
+            }
+            /* Adjust margins/paddings for print if needed */
+            .memento-container .p-8 { padding: 2rem !important; }
+            .memento-container .p-6 { padding: 1.5rem !important; }
+        }
+    </style>
+    <!-- html2pdf.js CDN for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- html2canvas.js CDN for image generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body class="bg-gray-100 p-8 flex flex-col items-center">
+
+    <!-- Input Section -->
+    <div class="input-section-container bg-white p-8 rounded-xl shadow-lg mb-8 w-full max-w-md">
+        <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Generate Honorary Guest Memento</h2>
+        <div class="input-group">
+            <label for="guestNameInput">Guest Name:</label>
+            <input type="text" id="guestNameInput" placeholder="Enter guest's name" class="focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <button id="generatePdfBtn" class="btn-primary w-full mb-2">Generate Memento PDF</button>
+        <button id="downloadImageBtn" class="btn-secondary w-full">Download Memento as Image</button>
+    </div>
+
+    <!-- Memento Display Area - This content will be converted to PDF -->
+    <div id="mementoFrame" class="memento-container bg-beige-200 p-6 rounded-xl shadow-2xl w-full max-w-2xl">
+        <div class="border-4 border-gold-main p-8 rounded-lg">
+            <div class="bg-white p-6 rounded-md text-center relative shadow-md">
+                <!-- Watermark Image Container -->
+                <div class="watermark-img-container">
+                    <img src="https://highondettol.github.io/sishu-mangal-jubilee/logo.jpg"
+                         alt="Sishu Mangal Parsat Logo Watermark"
+                         class="watermark-img"
+                         onerror="this.style.display='none'; console.error('Watermark image failed to load. Check URL.');">
+                </div>
+
+                <!-- All content layers above the watermark -->
+                <div class="content-layer">
+                    <!-- Golden Jubilee Title Section (top-center) -->
+                    <div class="mb-8 pt-4">
+                        <p class="memento-title-main text-gold-main mb-2 leading-tight">GOLDEN JUBILEE</p>
+                        <p class="memento-title-main text-black mb-1 leading-tight">Sishu Mangal Parsat</p>
+                        <p class="memento-subtitle mb-6">Celebrating 50 Years of Educational Excellence</p>
+
+                        <!-- 1975 - 2025 Box -->
+                        <div class="inline-block bg-light-gold-bg text-gold-main px-6 py-2 rounded-full text-lg font-bold mb-8">
+                            1975 - 2025
+                        </div>
+
+                        <!-- New dignified phrasing -->
+                        <p class="memento-text text-black mb-1" style="font-size: 1.0rem;">In profound appreciation of their invaluable contribution, we honor</p>
+                    </div>
+
+                    <!-- Aesthetic Vinetrail -->
+                    <div class="w-3/4 h-0.5 bg-gradient-to-r from-gold-main via-gold-light to-gold-main rounded-full my-8 mx-auto"></div>
+
+                    <!-- Main Memento Text for Honorary Guest -->
+                    <div class="memento-text text-gray-800 px-4">
+                        <p class="mb-2">
+                            <span id="guestNamePlaceholder" class="text-gold-light inline-block border-b border-black pb-1"></span>
+                        </p>
+                        <p style="font-size: 1.0rem;">for being an integral part of <span class="text-maroon-700">Sishu Mangal Parsat</span> and playing a pivotal role in its growth and success.</p>
+                    </div>
+
+                    <!-- Signature Section -->
+                    <div class="mt-12 flex justify-center items-end w-full gap-x-24 pb-4">
+                        <div class="text-left">
+                            <p class="signature-name">Manoka Paul Chowdhury</p>
+                            <p class="signature-detail">Vice President</p>
+                            <p class="signature-detail">Sishu Mangal Parsat.</p>
+                        </div>
+                        <div class="text-left">
+                            <p class="signature-name">Pallab Kanti Saha</p>
+                            <p class="signature-detail">Secretary</p>
+                            <p class="signature-detail">Sishu Mangal Parsat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get references to input fields and the button
+        const guestNameInput = document.getElementById('guestNameInput'); // Only guest name input
+        const generatePdfBtn = document.getElementById('generatePdfBtn');
+        const downloadImageBtn = document.getElementById('downloadImageBtn');
+
+        // Get references to the placeholders in the memento
+        const guestNamePlaceholder = document.getElementById('guestNamePlaceholder');
+
+        // Get reference to the memento frame div that will be converted to PDF
+        const mementoFrame = document.getElementById('mementoFrame');
+
+        // Add event listener to the button for PDF generation
+        generatePdfBtn.addEventListener('click', () => {
+            // Get the value from the input field
+            const guestName = guestNameInput.value.trim();
+
+            // Update the memento placeholder with the input value
+            guestNamePlaceholder.textContent = guestName;
+
+            // Configuration for html2pdf
+            const options = {
+                margin: 0.5, // Margin around the PDF content (inches)
+                filename: `Sishu_Mangal_Parsat_Guest_Memento_${guestName || 'Guest'}.pdf`, // Dynamic filename
+                image: { type: 'jpeg', quality: 0.98 }, // Image quality for rendering HTML elements
+                html2canvas: { scale: 2, logging: true, dpi: 192, letterRendering: true }, // Scale for better resolution
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } // A4 portrait
+            };
+
+            // Generate the PDF from the mementoFrame div
+            html2pdf().from(mementoFrame).set(options).save();
+        });
+
+        // Add event listener for image download
+        downloadImageBtn.addEventListener('click', () => {
+            const guestName = guestNameInput.value.trim();
+
+            // Update the memento placeholder with the input value
+            guestNamePlaceholder.textContent = guestName;
+
+            // Use html2canvas to capture the mementoFrame
+            html2canvas(mementoFrame, { scale: 2 }).then(canvas => {
+                const imageUrl = canvas.toDataURL('image/png'); // Get image data as PNG
+
+                // Create a temporary link element to trigger download
+                const link = document.createElement('a');
+                link.href = imageUrl;
+                link.download = `Sishu_Mangal_Parsat_Guest_Memento_${guestName || 'Guest'}.png`;
+                document.body.appendChild(link); // Append to body to make it clickable
+                link.click(); // Programmatically click the link
+                document.body.removeChild(link); // Clean up
+            }).catch(error => {
+                console.error('Error generating image:', error);
+                // You might want to show a user-friendly message here
+            });
+        });
+    </script>
+</body>
+</html>
