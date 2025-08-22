@@ -32,165 +32,155 @@
         .text-maroon-700 { color: var(--color-maroon-700); }
         .bg-light-gold-bg { background-color: var(--color-light-gold-bg); }
 
-
         /* Custom fonts for a more aesthetic look */
         body {
             font-family: 'Inter', sans-serif; /* Default font for UI elements */
             background-color: #f0f0f0; /* Light gray background for the page */
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Align to start to allow scrolling if content is long */
-            min-height: 100vh; /* Minimum height for full viewport */
-            padding: 2rem; /* Padding around the entire content */
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 2rem;
             box-sizing: border-box;
         }
 
-        /* Specific styles for the memento text to ensure ample space and classic feel */
         .memento-text {
-            font-family: 'Lora', serif; /* A classic serif font for the memento content */
-            line-height: 2.0; /* Adjusted line height for better spacing with new honorary text */
-            font-size: 1.25rem; /* Base font size */
+            font-family: 'Lora', serif;
+            line-height: 1.8;
+            font-size: 1.1rem; /* Slightly reduced for better fit */
         }
 
-        /* Style for the main title within the memento */
         .memento-title-main {
-            font-family: 'Playfair Display', serif; /* Elegant font for the main title */
-            font-weight: 700; /* Bold */
-            font-size: 2.2rem; /* Reduced font size for subtlety */
-            letter-spacing: 0.08em; /* Slightly reduced letter spacing */
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2rem; /* Adjusted for better fit */
+            letter-spacing: 0.08em;
         }
         .memento-subtitle {
-            font-family: 'Lora', serif; /* Subtitle font */
+            font-family: 'Lora', serif;
             font-style: italic;
-            font-size: 1rem;
-            color: #555; /* Slightly darker grey for readability */
-        }
-        .memento-section-title {
-            font-family: 'Lora', serif; /* For "Certificate of Recognition" */
-            font-weight: 600; /* Semi-bold */
-            font-size: 1.15rem;
-            margin-top: 2rem; /* Space above this section */
+            font-size: 0.9rem;
+            color: #555;
         }
 
-        /* Signature name style (less cursive, more elegant script) */
         .signature-name {
-            font-family: 'Great Vibes', cursive; /* Elegant, less aggressive cursive font for names */
-            font-size: 1.5rem; /* Slightly reduced font size */
-            font-weight: 400; /* Lighter weight for a more natural signature feel */
-            line-height: 1.2; /* Tighter line height for the name itself */
-            white-space: nowrap; /* Prevent text wrapping */
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.4rem;
+            font-weight: 400;
+            line-height: 1.2;
+            white-space: nowrap;
         }
 
-        /* Signature title/org style */
         .signature-detail {
-            font-family: 'Playfair Display', serif; /* Using Playfair Display for titles/org */
-            font-size: 0.75rem; /* Slightly reduced font size */
-            line-height: 1.2; /* Tighter line height */
-            white-space: nowrap; /* Prevent text wrapping */
+            font-family: 'Playfair Display', serif;
+            font-size: 0.7rem;
+            line-height: 1.2;
+            white-space: nowrap;
         }
 
-        /* Style for the input fields and button */
-        .input-group {
-            @apply mb-4;
-        }
-        .input-group label {
-            @apply block text-gray-700 text-sm font-bold mb-2;
-        }
-        .input-group input {
-            @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline;
-        }
-        .btn-primary {
-            @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out;
-        }
-        .btn-secondary {
-            @apply bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out;
-        }
+        /* Input section styles */
+        .input-group { @apply mb-4; }
+        .input-group label { @apply block text-gray-700 text-sm font-bold mb-2; }
+        .input-group input { @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline; }
+        .btn-primary { @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out; }
+        .btn-secondary { @apply bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out; }
 
         /* Watermark styling */
         .watermark-img-container {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 0; /* Ensure it's behind content */
-            pointer-events: none; /* Allow interaction with content above */
+            z-index: 0;
+            pointer-events: none;
         }
         .watermark-img {
-            width: 70%; /* Adjust size as needed, e.g., 50%, 70%, contain */
+            width: 70%;
             height: auto;
-            opacity: 0.1; /* Adjust opacity for watermark effect */
-            object-fit: contain; /* Ensure the image fits within its bounds */
+            opacity: 0.1;
+            object-fit: contain;
             transform: translateZ(0);
             -webkit-transform: translateZ(0);
         }
-
-        /* Ensure content layers are above the watermark */
         .content-layer {
             position: relative;
             z-index: 1;
         }
 
-        /* A4 size adjustments for the memento container */
+        /* A4 size and layout adjustments for print and display */
         .memento-container {
             width: 21cm; /* A4 width */
             height: 29.7cm; /* A4 height */
             box-sizing: border-box;
-            padding: 2.5cm; /* Padding for a more spacious layout */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Distribute space between sections */
+            background-color: transparent; /* Main container is transparent */
+            padding: 0; /* No padding on the main container */
+            position: relative;
+            overflow: hidden; /* Hide anything that goes outside the A4 frame */
         }
         
-        .memento-container .border-4 {
-            height: 100%; /* Make inner border fill the A4 space */
+        .memento-container .border-frame {
+            position: absolute;
+            top: 1cm;
+            left: 1cm;
+            right: 1cm;
+            bottom: 1cm;
+            border: 4mm solid var(--color-gold-main); /* Golden frame border thickness */
+            box-sizing: border-box;
+            border-image: linear-gradient(45deg, var(--color-gold-dark), var(--color-gold-light), var(--color-gold-dark)) 1;
+            padding: 1cm; /* Inner padding for the white content box */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-
+        
         .memento-container .bg-white {
-            flex-grow: 1; /* Make the main content area flexible */
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            height: 100%; /* Fill the entire inner frame */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            text-align: center;
+            padding: 2.5rem; /* Generous padding inside the white box */
         }
 
         .memento-content-main {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Center the main text block */
+            justify-content: center;
             align-items: center;
-            text-align: center;
         }
 
-
-        /* Hide the input section when printing */
+        /* Print-specific styles */
         @media print {
-            .input-section-container {
-                display: none;
-            }
+            .input-section-container { display: none; }
             body {
-                padding: 0; /* Remove padding for print */
-                margin: 0; /* Remove margin for print */
-                display: block; /* Allow normal flow for printing */
-                background-color: white; /* White background for print */
+                padding: 0;
+                margin: 0;
+                display: block;
+                background-color: white;
             }
             .memento-container {
-                box-shadow: none !important; /* Remove shadow for print */
-                border: none !important; /* Remove outer border for print if desired */
-                width: 100% !important; /* Ensure full width on print */
-                max-width: none !important; /* Remove max-width for print */
-                height: 100vh !important; /* Ensure it fits one page */
-                padding: 0; /* Let inner border handle padding */
+                box-shadow: none !important;
+                border: none !important;
+                width: 100% !important;
+                max-width: none !important;
+                height: 100vh !important;
+                position: absolute;
+                top: 0;
+                left: 0;
             }
-            /* Adjust margins/paddings for print if needed */
-            .memento-container .p-8 { padding: 2.5cm !important; }
-            .memento-container .p-6 { padding: 1.5cm !important; }
+            .memento-container .border-frame {
+                border-image: none; /* Turn off gradient for better printing */
+                border-color: var(--color-gold-main);
+                position: static;
+                margin: 1cm;
+                padding: 1cm;
+            }
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -208,9 +198,9 @@
         <button id="downloadImageBtn" class="btn-secondary w-full">Download Memento as Image</button>
     </div>
 
-    <div id="mementoFrame" class="memento-container bg-beige-200 p-6 rounded-xl shadow-2xl">
-        <div class="border-4 border-gold-main p-8 rounded-lg flex flex-col justify-between h-full">
-            <div class="bg-white p-6 rounded-md text-center relative shadow-md flex-grow flex flex-col justify-between">
+    <div id="mementoFrame" class="memento-container">
+        <div class="border-frame">
+            <div class="bg-white">
                 <div class="watermark-img-container">
                     <img src="https://highondettol.github.io/sishu-mangal-jubilee/logo.jpg"
                          alt="Sishu Mangal Parsat Logo Watermark"
@@ -228,7 +218,7 @@
                         <div class="inline-block bg-light-gold-bg text-gold-main px-6 py-2 rounded-full text-lg font-bold mb-4">
                             1975 - 2025
                         </div>
-                        <p class="memento-text text-black text-sm italic mt-2">
+                        <p class="memento-text text-black text-xs italic mt-2">
                              (Registered under the West Bengal Societies Registration Act, 1961 - No. S/17073/1975-76)
                         </p>
                     </div>
@@ -261,7 +251,7 @@
 
     <script>
         // Get references to input fields and the button
-        const guestNameInput = document.getElementById('guestNameInput'); // Only guest name input
+        const guestNameInput = document.getElementById('guestNameInput');
         const generatePdfBtn = document.getElementById('generatePdfBtn');
         const downloadImageBtn = document.getElementById('downloadImageBtn');
 
@@ -273,19 +263,15 @@
 
         // Add event listener to the button for PDF generation
         generatePdfBtn.addEventListener('click', () => {
-            // Get the value from the input field
             const guestName = guestNameInput.value.trim();
-
-            // Update the memento placeholder with the input value
             guestNamePlaceholder.textContent = guestName;
 
-            // Configuration for html2pdf
             const options = {
-                margin: 0, // No margin as the frame is already sized for A4
-                filename: `Sishu_Mangal_Parsat_Guest_Memento_${guestName || 'Guest'}.pdf`, // Dynamic filename
-                image: { type: 'jpeg', quality: 0.98 }, // Image quality for rendering HTML elements
-                html2canvas: { scale: 2, logging: true, dpi: 192, letterRendering: true }, // Scale for better resolution
-                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } // A4 portrait
+                margin: 0,
+                filename: `Sishu_Mangal_Parsat_Guest_Memento_${guestName || 'Guest'}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, logging: true, dpi: 192, letterRendering: true },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
             };
 
             // Generate the PDF from the mementoFrame div
@@ -295,24 +281,18 @@
         // Add event listener for image download
         downloadImageBtn.addEventListener('click', () => {
             const guestName = guestNameInput.value.trim();
-
-            // Update the memento placeholder with the input value
             guestNamePlaceholder.textContent = guestName;
 
-            // Use html2canvas to capture the mementoFrame
             html2canvas(mementoFrame, { scale: 2 }).then(canvas => {
-                const imageUrl = canvas.toDataURL('image/png'); // Get image data as PNG
-
-                // Create a temporary link element to trigger download
+                const imageUrl = canvas.toDataURL('image/png');
                 const link = document.createElement('a');
                 link.href = imageUrl;
                 link.download = `Sishu_Mangal_Parsat_Guest_Memento_${guestName || 'Guest'}.png`;
-                document.body.appendChild(link); // Append to body to make it clickable
-                link.click(); // Programmatically click the link
-                document.body.removeChild(link); // Clean up
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             }).catch(error => {
                 console.error('Error generating image:', error);
-                // You might want to show a user-friendly message here
             });
         });
     </script>
